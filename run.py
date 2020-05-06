@@ -17,6 +17,7 @@ root.title('Paper Clicker')
 root.geometry('500x500')
 #root.wm_attributes('-alpha', 0.1)
 root.configure(bg='#181915')
+
 FONT = 'Ubuntu'
 width = root.winfo_screenwidth()
 height = root.winfo_screenheight()
@@ -47,7 +48,7 @@ except:
     root.destroy()
     os.kill(os.getpid(), signal.SIGKILL)
     sys.exit()
-
+    
 #lbl1 = Label(text='Point 1', font=FONT,fg='white',bg='#181915')
 #lbl2 = Label(text='Point 2',font=FONT,fg='white',bg='#181915')
 #lbl1.place(x=10, y=50)
@@ -58,7 +59,6 @@ textfbtn1.set(text_btn1)
 
 textfbtn2 = StringVar()
 textfbtn2.set(text_btn2)
-
 def on_closing():
 	if messagebox.askokcancel("Quit", "Do you want to quit?"):
 		root.destroy()
@@ -115,7 +115,7 @@ def start():
     btn2 = Label(textvariable=textfbtn2,font=(FONT,10),bg='#181915',fg='white',cursor="hand2",relief="groove",borderwidth=2)
     btn1.place(x=70, y=50)
     btn2.place(x=70, y=100)
-    btn.place(x=175,y=461)
+    btn.pack(side='bottom')
 
     label_time_interva = Label(text='Time Interval',font=FONT, fg='white',bg='#181915')
     time_interval = Spinbox(from_=1,to=30,width=5,bd=0,insertborderwidth=0,bg='#23251E',fg='white',state='disabled')
@@ -137,7 +137,7 @@ def start():
     image_cvs.create_image(0, 0, image=background_img2, anchor=NW)
 
     ico_btn = Label(text='add',image=ico_add_btn,borderwidth=0,cursor="hand2",bg='#181915')
-    ico_btn.place(x=10,y=10)
+    ico_btn.place(x=0,y=10)
 
     hover_add_point = HoverInfo(ico_btn, 'Add point')
     hover_start = HoverInfo(btn, 'Start Clicker')
